@@ -6,7 +6,7 @@ import Rating from './Rating'
 
 import close from '../assets/close.svg'
 
-const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop,id_of_sold }) => {
+const Product = ({  item_nft, item,items_of_sold, provider, account, dappazon, togglePop,id_of_sold }) => {
   const [order, setOrder] = useState(null)
   const [hasBought, setHasBought] = useState(false)
   const [number,setnumber] = useState(0)
@@ -29,7 +29,7 @@ const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop,id
   // }
   const buyHandler =async () => {
     const signer = await provider.getSigner()
-    let transaction = dappazon.connect(signer).purchaseItem(id_of_sold+1,1)
+    let transaction = dappazon.connect(signer).purchaseItem(id_of_sold+1,number)
     await transaction.wait()
     setHasBought(true)
   }
@@ -43,8 +43,8 @@ const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop,id
     <div className="product">
         <div className='product__details'>
           <div className='product__image'>
-            {/* <img src={item.image} alt='Product'/> */}
-
+            <img src={item_nft.image} alt='Product'/> */
+              
           </div>
           <div className='product__overview'>
             <h1 > {item.itemId.toString()}</h1>
@@ -72,7 +72,7 @@ const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop,id
                   </>
                 }
               </p>
-                <input type='text' placeholder='amount of items' value={number} onClick={handleOnClick}  />
+                <input type='text' placeholder='amount of items' value={number} onChange={handleOnClick}  />
               <button className='product__buy' onClick={buyHandler}>
                 Buy now
               </button>

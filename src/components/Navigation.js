@@ -44,7 +44,7 @@ const Navigation = ({ account,contract_of_coin,provider_of_coin,setaccount,contr
     const HanldeMyBalance = async() => {
         console.log(contract_of_nft)
         const items_user_count = []
-        for(let i = 1;i<=3;i++) {
+        for(let i = 1;i<=10;i++) {
             const item = await contract_of_nft.balanceOf(account,i)
             const item_ = await contract_of_nft.items(i-1)
             if(item>0) {

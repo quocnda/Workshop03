@@ -28,10 +28,20 @@ function App() {
   const [items_of_sold_id,setitem_of_sold_id] = useState(0)
   const [provider_of_nft,setprovider_of_nft] = useState(null)
   const [contract_of_nft,setcontract_of_nft] = useState(null)
- 
+  const [item_from_nft,setitem_from_nft] = useState(null)
   const togglePop = (id) => {
+    
       const item_ = items_of_sold[id]
+      if(item_ ==undefined) {
+        console.log("da vao day")
+      }
+      else {
+        const item = items[item_.itemId-1]
+        console.log(item)
+        setitem_from_nft(item)
+      }
       setitem(item_)
+    
       toggle ? settoggle(false) : settoggle(true)
     }
   const togglePopItem = () => {
@@ -46,14 +56,14 @@ function App() {
       await provider.send("eth_requestAccounts", []);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(contract_address_Market,Contract_ABI_Market,signer)
-      const provider_of_nft = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-2-s2.binance.org:8545/")
+      const provider_of_nft = new ethers.providers.JsonRpcProvider("https://public-en-baobab.klaytn.net")
       const contract_of_nft = new ethers.Contract(contract_address_NFT,Contract_ABI_NFT,provider_of_nft)
-      const provider_of_coin = new ethers.providers.JsonRpcProvider("https://data-seed-prebsc-2-s2.binance.org:8545/")
+      const provider_of_coin = new ethers.providers.JsonRpcProvider("https://public-en-baobab.klaytn.net")
       const contract_of_coin = new ethers.Contract(contract_address_Coin,Contract_Coin_ABI,provider_of_coin)
       setprovider_of_coin(provider_of_coin)
       setprovider(provider)
       setprovider_of_nft(provider_of_nft)
-    //  for (let i = 1 ; i<3;i++) {
+    //  for (let i = 0 ; i<10;i++) {
     //   const tmp = i+1
     //   const transaction = await contract.makeItem(tmp,20,20)
     //   await transaction.wait()
@@ -66,18 +76,18 @@ function App() {
       setcontract_of_nft(contract_of_nft)
       const amount_of_item = await contract.itemCount()
      const number_items = parseInt(amount_of_item._hex)
+      console.log(number_items)
      for (let i=1; i<=number_items;i++) {
       const item = await contract.items(i)
       items_of_sold.push(item)
       const itemID= item.itemId
       
       const item_ = await contract_of_nft.items(itemID.toString()-1)
-      items.push(item_)
-      console.log(item)
-      console.log(item_)
+       items.push(item_)
+      
      }
-      setitems(items)
-      setitem_of_sold(items_of_sold)
+     setitems(items)
+       setitem_of_sold(items_of_sold)
     }
     else {
       console.log("ch cai ")
@@ -143,7 +153,7 @@ function App() {
       )}
       {toggle &&
       (
-        <Product item={item} items_of_sold ={items_of_sold} provider={provider} account={account} dappazon={contract_from_market} togglePop={togglePop} id_of_sold = {items_of_sold_id}/>
+        <Product item_nft= {item_from_nft} item={item} items_of_sold ={items_of_sold} provider={provider} account={account} dappazon={contract_from_market} togglePop={togglePop} id_of_sold = {items_of_sold_id}/>
       )
       }
       {
