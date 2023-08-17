@@ -6,7 +6,7 @@ import Rating from './Rating'
 
 import close from '../assets/close.svg'
 
-const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop }) => {
+const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop,id_of_sold }) => {
   const [order, setOrder] = useState(null)
   const [hasBought, setHasBought] = useState(false)
   const [number,setnumber] = useState(0)
@@ -29,7 +29,7 @@ const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop })
   // }
   const buyHandler =async () => {
     const signer = await provider.getSigner()
-    let transaction = dappazon.connect(signer).purchaseItem(item.itemId,number)
+    let transaction = dappazon.connect(signer).purchaseItem(id_of_sold+1,1)
     await transaction.wait()
     setHasBought(true)
   }
@@ -66,7 +66,9 @@ const Product = ({ item,items_of_sold, provider, account, dappazon, togglePop })
                 {
                   <>
                   <p>Gia ca</p>
+                  {console.log(id_of_sold)}
                   <p> {item.price.toString()} </p>
+                  <p>{item.seller.toString()}</p>
                   </>
                 }
               </p>
