@@ -40,85 +40,78 @@ h2:not(.product__overview h2) {
 /* -- NAVIGATION -- */
 
 nav {
-  /* display: grid; */
-  /* grid-template-columns: repeat(3, 1fr); */
   align-items: center;
   background-color: var(--clr-bunker);
+  box-shadow: 0px 10px 20px rgb(0, 140, 255, 0.7);
 }
 
-.nav__main{
-  margin: 10px 30px;
-  margin-top: 0px;
-}
-
-.nav__brand {
+.nav__displayHead{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--clr-ebony-clay);
 }
-
-.nav__brand img {
+#nav__brand {
+  width: 50%;
+  margin-left: 2%;
+}
+#nav__brand img {
   max-width: 125px;
   height: auto;
 }
-
-.nav__brand h1 {
+#nav__brand h1 {
   color: var(--clr-white);
   font-family: "Lalezar";
   font-size: 2.5em;
 }
-
-.nav__links {
-  background-color: var(--clr-ebony-clay);
-  grid-column: 1 / span 3;
-
-  padding: 10px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  list-style: none;
-}
-
-.nav__links li button{
-  padding: 5px;
-  border-radius: 10px;
-}
-
-.nav__links li {
-  margin: 0 15px;
-}
-
-.nav__links li a {
+#nav__coins a{
   text-decoration: none;
-  color: var(--clr-white);
+  color: white;
 }
-
-.nav__links li a:hover {
+#nav__coins{
+  width: 50%;
+  font-size: 24px;
+  margin-top: 15px;
+  margin-right: 2%;
+  text-align: right;
+}
+#nav__coins :hover{
   color: var(--clr-orange);
 }
 
+
+.nav__displaySecond{
+  display: flex;
+  margin: 10px auto;
+}
 .nav__search {
+  width: 50%;
+  margin-left: 2%;
+  float: left;
+}
+.nav__search input{
+  width: 45%;
   padding: 8px;
   border-radius: 10px;
-  width: 25%;
-  margin-right: 1%;
 }
-.nav__value {
-  padding: 5px;
-  border-radius: 10px;
-}
-
-.nav__search:hover {
+.nav__search input:hover {
   outline: 1px solid var(--clr-orange);
 }
-
-.nav__connect {
-  width: 150px;
+.nav__connect{
+  width: 50%;
+  cursor: pointer;
+  transition: all 250ms ease;
+  text-align: right;
+  margin-right: 2%;
+}
+#nav__valueChange{
+  margin: 0 2%;
+  border-radius: 10px;
+  height: 35px;
+  padding: 10px;
+}
+.nav__deposit, .nav__connectbtn{
+  width: 15%;
   height: 40px;
-  margin: auto 10px;
-
+  
   background-color: var(--clr-orange);
   color: var(--clr-black);
 
@@ -128,13 +121,29 @@ nav {
   font-family: "Lalezar";
   font-size: 1.25em;
   font-weight: 600;
-
   cursor: pointer;
-  transition: all 250ms ease;
-  float: right;
+}
+.nav__connect button:hover {
+  background-color: var(--clr-orange-dark);
 }
 
-.nav__connect:hover {
+
+.nav__links {
+  margin-left: 1%;
+  text-align: center;
+}
+.nav__links button{
+  border-radius: 10px;
+  font-family: "Lalezar";
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 10px 1%;
+  width: 10%;
+  height: 40px;
+  color: var(--clr-black);
+  background-color: var(--clr-orange);
+}
+.nav__links button:hover{
   background-color: var(--clr-orange-dark);
 }
 
