@@ -151,11 +151,11 @@ function App() {
         <Section title={"Toys and Gaming"} items={toys} togglePop={togglePop}/> */}
         </>
       )}
-      {/* {toggle &&
+      {toggle &&
       (
          <Product item_nft= {item_from_nft} item={item} items_of_sold ={items_of_sold} provider={provider} account={account} dappazon={contract_from_market} togglePop={togglePop} id_of_sold = {items_of_sold_id}/>
       )
-      } */}
+      } 
       {
         toggleofMakeitem && (
           <Makeitem toggle={toggleofMakeitem} 
