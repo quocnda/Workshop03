@@ -60,51 +60,57 @@ const Navigation = ({ account,contract_of_coin,provider_of_coin,setaccount,contr
         
         <nav>
             <div className='nav__brand'>
-                <h1>Decentralized Market</h1>
+                    <h1>Decentralized Market</h1>
             </div>
-            <input type='text'
-             className='nav__search'
-            />
-            <input type='number' value={number} onChange={handleOnchange}/>           
-             <button type='button'
-            className='nav__connect'
-            onClick={handleOfDeposit}
-            >
-                Deposit
-            </button>
-            {
-                
-                account ? 
-            (
-            <button
-            type='button'
-            className='nav__connect'
-            >
-                {account.slice(0,6)+ '...' + account.slice(38,42)}
-            </button>
-            ) : (
+            <div className='nav__main'>
+            
+                <input type='text'
+                className='nav__search'
+                />
+                <input type='number' className='nav__value' value={number} onChange={handleOnchange}/>           
                 <button type='button'
-                className='nav__connect'
-                onClick={connectHandle}
+                className='nav__connect' 
+                onClick={handleOfDeposit}
                 >
-                    Connect
-
+                    Deposit
                 </button>
-            )
-                
-                
-}
-<div className='nav__links'>
-<li> <a href='#Clothing and Jewelry'> {number_of_balance} </a> </li>
-<li> <button className='nav__connect' type='button'
-onClick={HandleBUtttonMakeItem}
->makeItem</button> </li>
-</div>
-            <ul className='nav__links'>
-                <li>  <button onClick={HanldeMyBalance}><a> My Blance Of Items</a></button> </li>
-                <li> <a href='#Electrionic and Gadgets'> Electronic and Gadgets</a></li>
-                <li> <a href='#Toys and Gaming'> Toys and Gaming</a></li>
-            </ul>
+                {
+                    
+                    account ? 
+                (
+                <button
+                type='button'
+                className='nav__connect'
+                >
+                    {account.slice(0,6)+ '...' + account.slice(38,42)}
+                </button>
+                ) : (
+                    <button type='button'
+                    className='nav__connect'
+                    onClick={connectHandle}
+                    >
+                        Connect
+
+                    </button>
+                )
+                    
+                }
+            </div>
+            <div className='nav__sub'>
+
+                <div className='nav__links'>
+                <li> <a href='#Clothing and Jewelry'> {number_of_balance} </a> </li>
+                <li> <button className='nav__connect' type='button'
+                    onClick={HandleBUtttonMakeItem}
+                    >Make Item</button> </li>
+                </div>
+                <ul className='nav__links'>
+                    <li>  <button onClick={HanldeMyBalance}><a> My Blance Of Items</a></button> </li>
+                    <li> <a href='#Electrionic and Gadgets'> Electronic and Gadgets</a></li>
+                    <li> <a href='#Toys and Gaming'> Toys and Gaming</a></li>
+                </ul>
+
+            </div>
         </nav>
     );
 }
