@@ -59,56 +59,38 @@ const Navigation = ({ account,contract_of_coin,provider_of_coin,setaccount,contr
     return (
         
         <nav>
-            <div className='nav__brand'>
-                    <h1>Decentralized Market</h1>
+            <div className='nav__displayHead'>
+                    <div id='nav__brand'><h1>Decentralized Market</h1></div>
+                    <div id='nav__coins'><a href='#Clothing and Jewelry'> {number_of_balance} Coins </a></div>
             </div>
-            <div className='nav__main'>
             
-                <input type='text'
-                className='nav__search'
-                />
-                <input type='number' className='nav__value' value={number} onChange={handleOnchange}/>           
-                <button type='button'
-                className='nav__connect' 
-                onClick={handleOfDeposit}
-                >
-                    Deposit
-                </button>
-                {
-                    
-                    account ? 
-                (
-                <button
-                type='button'
-                className='nav__connect'
-                >
-                    {account.slice(0,6)+ '...' + account.slice(38,42)}
-                </button>
-                ) : (
-                    <button type='button'
-                    className='nav__connect'
-                    onClick={connectHandle}
-                    >
-                        Connect
-
+            <div className='nav__displaySecond'>
+                <div className='nav__search'><input type='text' placeholder='Search'/></div>  
+                <div className='nav__connect'>   
+                    {
+                        account ? (
+                        <button type='button' className='nav__connectbtn'>
+                            {account.slice(0,6)+ '...' + account.slice(38,42)}
+                        </button>
+                        ) : (
+                            <button type='button' className='nav__connectbtn' onClick={connectHandle}>
+                                Connect
+                            </button>
+                        )
+                    }
+                    <input type='number' id='nav__valueChange' value={number} onChange={handleOnchange}/> 
+                    <button type='button' className='nav__deposit' onClick={handleOfDeposit}>
+                        Deposit
                     </button>
-                )
-                    
-                }
-            </div>
-            <div className='nav__sub'>
-
-                <div className='nav__links'>
-                <li> <a href='#Clothing and Jewelry'> {number_of_balance} </a> </li>
-                <li> <button className='nav__connect' type='button'
-                    onClick={HandleBUtttonMakeItem}
-                    >Make Item</button> </li>
                 </div>
-                <ul className='nav__links'>
-                    <li>  <button onClick={HanldeMyBalance}><a> My Blance Of Items</a></button> </li>
-                    <li> <a href='#Electrionic and Gadgets'> Electronic and Gadgets</a></li>
-                    <li> <a href='#Toys and Gaming'> Toys and Gaming</a></li>
-                </ul>
+            </div>
+
+            <div className='nav__links'>
+            
+                <button id='nav__makeItem' type='button' onClick={HandleBUtttonMakeItem}>
+                    Make Item
+                </button>
+                <button id='nav__balanceOfItems' onClick={HanldeMyBalance}><a>Balance Of Items</a></button> 
 
             </div>
         </nav>
